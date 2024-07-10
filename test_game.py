@@ -20,6 +20,16 @@ class TestGame(TestCase):
         self.assertEqual(3, result.get_strikes())
         self.assertEqual(0, result.get_balls())
 
+
+    def test_return_solve_result_if_unmatched_number(self):
+        self.game.question = "123"
+        result : GameResult = self.game.guess("456")
+
+        self.assertIsNotNone(result)
+        self.assertFalse(result.get_solved())
+        self.assertEqual(0, result.get_strikes())
+        self.assertEqual(0, result.get_balls())
+
     def assert_illegal_argument(self, guess_number):
         try:
             self.game.guess(guess_number)
