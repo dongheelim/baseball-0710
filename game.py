@@ -5,5 +5,5 @@ class Game:
         if len(number) != 3:
             raise TypeError("자릿수가 3자리 이어야 합니다.")
 
-        if not all(ord("0") <= char <= ord("9") for char in number):
+        if not all(ord("0") <= ord(char) <= ord("9") for char in number):
             raise TypeError()
