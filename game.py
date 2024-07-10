@@ -8,5 +8,8 @@ class Game:
         if not all(ord("0") <= ord(char) <= ord("9") for char in number):
             raise TypeError()
 
-        if len(set(number)) != 3:
+        if self.is_duplicated(number):
             raise TypeError()
+
+    def is_duplicated(self, number):
+        return len(set(number)) != 3
