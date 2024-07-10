@@ -13,10 +13,14 @@ class Game:
             return GameResult(True, 3, 0)
         else:
             strikes = 0
+            balls = 0
             for idx, q_number in enumerate(self.question):
                 strikes += int(number[idx]==q_number)
 
-            return GameResult(False, strikes  , 0)
+            for idx, q_number in enumerate(self.question):
+                balls += int(number[idx]!=q_number and q_number in number)
+
+            return GameResult(False, strikes  , balls)
 
     def assert_illegal_value(self, number):
         if number is None:
